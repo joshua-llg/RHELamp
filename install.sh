@@ -17,14 +17,13 @@ FILE="/home/josh/CLONES/Lampserver/success"
  sudo mysql_secure_installation
 echo ""
 echo ""
+#temporarely stops httpd/mariadb and redirects success input into success file
  sudo systemctl stop httpd
  sudo systemctl stop mariadb 0>> success
-
+#checks to see if success file exist
 if [[ -f $FILE ]];then
 	 echo -e "  Lamp install was a successful,\nnow make Server script an executable\n    and sudo ./server up/down "
-	 echo ""
-else
-	echo "something went wrong"	 
+	 echo ""	 
 fi
 
 rm success
