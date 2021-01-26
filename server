@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This is for Redhat Enterprise Linux or Fedora 
+# ./server up: starts up Lamp server
+if [ $1 = up ] 
+ then
+	systemctl start httpd && systemctl enable httpd
+	systemctl start mariadb && systemctl enable mariadb
+	systemctl start php-fpm && systemctl enable php-fpm
+      echo " Lamp server up"
+
+# ./server down: closes Lamp server              
+elif [ $1 = down ] 
+ then
+	systemctl stop httpd && systemctl disable httpd
+	systemctl stop mariadb && systemctl disable mariadb
+	systemctl stop php-fpm && systemctl disable php-fpm
+      echo " Lamp server down"
+
+else 
+	echo "invald option"
+fi
+ exit
